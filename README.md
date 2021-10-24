@@ -6,6 +6,7 @@ The original idea is [here](https://github.com/nathancarter/qtmathjax).
 # Install
 ```
 git clone https://github.com/SMP33/qmathjax.git
+cd qmathjax
 git submodule init
 git submodule update
 ```
