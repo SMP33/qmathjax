@@ -22,7 +22,11 @@ bool MathJaxSVG::isLoaded() const
 
 void MathJaxSVG::render(const QString& latex)
 {
-    m_latexJS->render(latex);
+    if (mb_isLoaded) {
+        m_latexJS->render(latex);
+    } else {
+        m_queue.push_back(latex);
+    }
 }
 
 void MathJaxSVG::load()
@@ -33,4 +37,9 @@ void MathJaxSVG::load()
 void MathJaxSVG::setIsLoaded(bool new_isLoaded)
 {
     mb_isLoaded = new_isLoaded;
+
+    while (!m_queue.empty()) {
+        render(m_queue.front());
+        m_queue.pop_front();
+    }
 }

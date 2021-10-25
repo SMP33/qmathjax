@@ -39,6 +39,8 @@ MainWindow::MainWindow(QWidget* parent)
     connect(m_edit, &QLineEdit::returnPressed,
         this, &MainWindow::onReturnPressed);
 
+    m_tex->render(R"(\frac{Простой^{Пример}}{С\;russian\;текстом})");
+
     m_tex->load();
 }
 
@@ -73,8 +75,6 @@ void MainWindow::onMathJaxLoaded(bool)
     m_edit->setEnabled(true);
     m_tab->setEnabled(true);
     m_tab->setColumnCount(2);
-
-    m_tex->render(R"(\frac{Простой^{Пример}}{С\;russian\;текстом})");
 }
 
 void MainWindow::onReturnPressed()

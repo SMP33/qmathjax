@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QtCore/QObject>
+#include <QQueue>
 
 class LatextJs;
 
@@ -22,6 +23,7 @@ private slots:
     void setIsLoaded(bool new_isLoaded);
 
 private:
+    QQueue<QString> m_queue;
     bool mb_isLoaded;
     LatextJs* m_latexJS;
 };
